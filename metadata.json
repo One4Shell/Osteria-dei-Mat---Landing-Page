@@ -1,0 +1,7 @@
+{
+  "name": "Osteria dei Mat - Premium BBQ",
+  "description": "Un'esperienza culinaria d'eccellenza a Vallecrosia Alta, specializzata in carni pregiate preparate dallo chef macellaio.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
