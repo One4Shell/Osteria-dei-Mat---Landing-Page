@@ -48,13 +48,11 @@ const Hero: React.FC = () => {
           
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
             <a 
-              href={`https://wa.me/${RESTAURANT_INFO.whatsapp}?text=Salve,%20vorrei%20prenotare%20un%20tavolo`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#reservation"
               className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 transition-all transform hover:scale-105 shadow-xl shadow-orange-900/20"
             >
               <MessageCircle size={20} />
-              PRENOTA SU WHATSAPP
+              PRENOTA UN TAVOLO
             </a>
             <a 
               href="#menu"

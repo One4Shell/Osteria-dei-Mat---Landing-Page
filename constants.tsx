@@ -83,6 +83,7 @@ export const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'Chi Siamo', href: '#about' },
   { label: 'Menu', href: '#menu' },
+  { label: 'Prenota', href: '#reservation' },
   { label: 'Recensioni', href: '#reviews' },
   { label: 'Contatti', href: '#contact' },
 ];

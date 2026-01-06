@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
                 <h3 className="text-2xl font-serif font-bold mb-4">Ci trovi a Vallecrosia Alta</h3>
                 <p className="text-zinc-500 mb-6">Piazza del Popolo, 5</p>
                 <a 
-                  href="https://maps.google.com/?q=Piazza+del+Popolo,+5,+18019+Vallecrosia+Alta"
+                  href="https://maps.app.goo.gl/RKaAt6WC6B7e233v5"
                   target="_blank"
                   className="bg-zinc-800 hover:bg-orange-600 text-white px-6 py-3 rounded-full text-sm font-bold transition-all"
                 >

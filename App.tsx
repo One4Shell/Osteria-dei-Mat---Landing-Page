@@ -7,6 +7,7 @@ import About from './components/About';
 import Menu from './components/Menu';
 import Reviews from './components/Reviews';
 import Contact from './components/Contact';
+import ReservationForm from './components/ReservationForm';
 import { MessageCircle, ArrowUp } from 'lucide-react';
 import { RESTAURANT_INFO } from './constants';
 
@@ -56,23 +57,8 @@ const App: React.FC = () => {
         <About />
         <Menu />
         
-        {/* High-quality Meat Callout */}
-        <section className="py-20 bg-orange-600 text-black">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <h3 className="text-4xl md:text-6xl font-serif font-black tracking-tight text-center md:text-left">
-              Vuoi gustare <br />la migliore scottona?
-            </h3>
-            <a 
-              href={`https://wa.me/${RESTAURANT_INFO.whatsapp}?text=Salve,%20vorrei%20prenotare%20un%20tavolo`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-black text-white px-10 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-2xl flex items-center gap-3"
-            >
-              <MessageCircle />
-              RISERVA IL TUO POSTO
-            </a>
-          </div>
-        </section>
+        {/* Reservation Form Section */}
+        <ReservationForm />
 
         <Reviews />
         <Contact />
