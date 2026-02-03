@@ -27,7 +27,7 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
   const opacityOverlay = useTransform(smoothY, [0, 0.8], [0.3, 0.95]);
 
   return (
-    <section ref={containerRef} id="home" className="relative h-[120vh] flex items-center justify-center overflow-hidden bg-black perspective-container">
+    <section ref={containerRef} id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-black perspective-container">
       {/* Background Layer with Zoom-Scroll */}
       <motion.div 
         style={{ scale: scaleBg, y: yBg }}
