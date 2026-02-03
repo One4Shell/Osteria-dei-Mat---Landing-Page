@@ -83,10 +83,10 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           style={{ rotateY: logoRotate, y: logoY }}
-          className="relative mb-12 flex justify-center"
+          className="relative mb-0 flex justify-center"
         >
           <div className="relative group">
-             <div className="absolute inset-0 bg-orange-600/30 blur-[100px] rounded-full scale-150 group-hover:bg-orange-600/50 transition-colors" />
+             <div className="absolute inset-0 bg-orange-600/30 blur-[100px] rounded-full scale-100 group-hover:bg-orange-600/50 transition-colors" />
              <img 
                src={LOGO_URL} 
                alt="Osteria dei Mat Top Hat" 
@@ -111,7 +111,7 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
             <div className="h-[1px] w-12 md:w-24 bg-orange-600/50" />
           </div>
 
-          <h1 className="text-6xl md:text-[10rem] font-serif font-black mb-8 leading-[0.85] tracking-tighter uppercase">
+          <h1 className="text-6xl md:text-[8rem] font-serif font-black mb-8 leading-[0.85] tracking-tighter uppercase">
             <span className="block text-white opacity-90">Osteria</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-b from-orange-400 via-orange-600 to-orange-900 filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]">Dei Mat</span>
           </h1>
@@ -124,26 +124,6 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
           >
             "Dove la carne incontra il fuoco e la tradizione pugliese si fa arte."
           </motion.p>
-          
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <motion.a 
-              whileHover={{ scale: 1.05, boxShadow: "0 0 80px rgba(234,88,12,0.4)" }}
-              whileTap={{ scale: 0.95 }}
-              href="#reservation"
-              className="group bg-orange-600 text-white px-16 py-7 rounded-full font-black text-xl flex items-center gap-4 transition-all uppercase tracking-widest shadow-2xl"
-            >
-              <MessageCircle size={28} className="group-hover:rotate-12 transition-transform" />
-              PRENOTA ORA
-            </motion.a>
-            <motion.a 
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
-              whileTap={{ scale: 0.95 }}
-              href="#menu"
-              className="bg-white/5 backdrop-blur-3xl border border-white/10 text-white px-16 py-7 rounded-full font-black text-xl transition-all uppercase tracking-widest"
-            >
-              IL NOSTRO MENU
-            </motion.a>
-          </div>
         </motion.div>
       </motion.div>
 
@@ -153,7 +133,7 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
         className="absolute left-16 bottom-24 hidden lg:flex flex-col gap-8 items-center z-30"
       >
         <div className="h-48 w-[1px] bg-gradient-to-t from-orange-600 to-transparent" />
-        <span className="[writing-mode:vertical-lr] text-orange-600/50 uppercase tracking-[1em] text-[10px] font-black">PUGLIA 2026</span>
+        <span className="[writing-mode:vertical-lr] text-orange-600/50 uppercase tracking-[1em] text-[10px] font-black">VALLECROSIA 2026</span>
       </motion.div>
 
       {/* Scroll Indicator */}

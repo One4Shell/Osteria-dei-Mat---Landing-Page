@@ -73,7 +73,7 @@ const App: React.FC = () => {
                 className="w-full h-full bg-orange-600"
               />
             </div>
-            <p className="mt-8 text-[10px] font-black uppercase tracking-[1em] text-orange-600/80 animate-pulse">Inizializzando l'Eccellenza</p>
+            <p className="mt-8 text-[10px] text-center font-black uppercase tracking-[1em] text-orange-600/80 animate-pulse">Inizializzando l'Eccellenza</p>
           </motion.div>
         )}
       </AnimatePresence>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Thermometer, Zap, Award, Target } from 'lucide-react';
+import { LOGO_URL } from '../constants';
 
 const ProductSection: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -100,7 +101,7 @@ const ProductSection: React.FC = () => {
         style={{ y: useTransform(scrollYProgress, [0.4, 0.7], [100, -100]) }}
         className="absolute top-1/4 right-0 w-64 h-64 opacity-20 pointer-events-none hidden xl:block"
       >
-        <img src="https://img.freepik.com/free-photo/raw-beef-steak-wooden-board_1150-10156.jpg?w=740" className="w-full h-full object-contain rotate-45" alt="Meat slice" />
+        <img src={ LOGO_URL } className="w-full h-full object-contain rotate-45" alt="Meat slice" />
       </motion.div>
     </section>
   );

@@ -119,9 +119,9 @@ const Menu: React.FC<{ items: any[] }> = ({ items }) => {
           >
             L'arte della frollatura
           </motion.span>
-          <h2 className="text-7xl md:text-[9rem] font-serif font-black mb-16 uppercase tracking-tighter leading-[0.8]">
+          <h2 className="text-5xl md:text-[9rem] font-serif font-black mb-16 uppercase tracking-tighter leading-[0.8]">
             <span className="text-white opacity-20">Selezione</span><br />
-            <span className="text-orange-600 italic">Chef Macellaio</span>
+            <span className="text-orange-600 italic">Chef</span>
           </h2>
           
           <div className="flex flex-wrap justify-center gap-6 mb-20">
