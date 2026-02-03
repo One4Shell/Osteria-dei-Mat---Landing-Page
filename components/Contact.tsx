@@ -80,7 +80,7 @@ const Contact: React.FC<ContactProps> = ({ info }) => {
                   target="_blank"
                   className="bg-white text-black hover:bg-orange-600 hover:text-white px-10 py-5 rounded-full text-sm font-black tracking-widest transition-all shadow-2xl uppercase"
                 >
-                  APRI IN GOOGLE MAPS
+                  APRI MAPS
                 </a>
               </div>
            </div>

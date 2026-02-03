@@ -195,7 +195,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ info, openingHours })
                 className={`w-full ${(error || !formData.time || !formData.name) ? 'bg-zinc-800 cursor-not-allowed text-zinc-600' : 'bg-orange-600 hover:bg-orange-700 text-white shadow-[0_20px_40px_rgba(234,88,12,0.3)]'} py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-4 transition-all uppercase tracking-widest`}
               >
                 <MessageCircle size={28} />
-                {(error || !formData.date) ? 'DATA NON VALIDA' : !formData.time ? 'SCEGLI UN ORARIO' : 'PRENOTA VIA WHATSAPP'}
+                {(error || !formData.date) ? 'SEGLI UNA DATA' : !formData.time ? 'SCEGLI UN ORARIO' : 'PRENOTA'}
               </motion.button>
               <p className="text-center text-zinc-600 text-[10px] mt-6 uppercase tracking-[0.2em] font-bold">
                 Riceverai conferma immediata via chat dal nostro staff.
