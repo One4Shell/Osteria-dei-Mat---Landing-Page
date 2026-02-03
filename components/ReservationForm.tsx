@@ -2,17 +2,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Users, Clock, User, MessageCircle, AlertCircle } from 'lucide-react';
-import { RESTAURANT_INFO } from '../constants';
-import { openingHoursData } from '../opening_hours';
 
-interface OpeningDay {
-  day: string;
-  open: string;
-  close: string;
-  closed: boolean;
+interface ReservationFormProps {
+  info: any;
+  openingHours: any;
 }
 
-const ReservationForm: React.FC = () => {
+const ReservationForm: React.FC<ReservationFormProps> = ({ info, openingHours }) => {
   const [formData, setFormData] = useState({
     name: '',
     date: '',
@@ -23,21 +19,19 @@ const ReservationForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const today = useMemo(() => new Date().toISOString().split('T')[0], []);
 
-  // Genera gli slot orari ogni 30 minuti basandosi sull'orario di apertura
   const availableTimeSlots = useMemo(() => {
-    if (!formData.date) return [];
+    if (!formData.date || !openingHours) return [];
     
     const selectedDate = new Date(formData.date);
-    const dayOfWeek = selectedDate.getDay().toString() as keyof typeof openingHoursData;
-    const schedule: OpeningDay = (openingHoursData as any)[dayOfWeek];
+    const dayOfWeek = selectedDate.getDay().toString();
+    const schedule = openingHours[dayOfWeek];
 
-    if (schedule.closed) return [];
+    if (!schedule || schedule.closed) return [];
 
     const slots: string[] = [];
     let current = schedule.open;
     const end = schedule.close;
 
-    // Funzione helper per aggiungere minuti a una stringa HH:mm
     const addMinutes = (time: string, mins: number) => {
       const [h, m] = time.split(':').map(Number);
       const date = new Date();
@@ -45,15 +39,13 @@ const ReservationForm: React.FC = () => {
       return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
     };
 
-    while (current <= end) {
+    while (current < end) {
       slots.push(current);
       current = addMinutes(current, 30);
-      // Evitiamo di prenotare esattamente all'orario di chiusura o dopo
-      if (current >= end) break;
     }
 
     return slots;
-  }, [formData.date]);
+  }, [formData.date, openingHours]);
 
   const formatDate = (dateStr: string) => {
     if (!dateStr) return '';
@@ -62,23 +54,19 @@ const ReservationForm: React.FC = () => {
   };
 
   useEffect(() => {
-    validateDate();
-  }, [formData.date]);
-
-  const validateDate = () => {
-    if (!formData.date) return;
+    if (!formData.date || !openingHours) return;
 
     const selectedDate = new Date(formData.date);
-    const dayOfWeek = selectedDate.getDay().toString() as keyof typeof openingHoursData;
-    const schedule: OpeningDay = (openingHoursData as any)[dayOfWeek];
+    const dayOfWeek = selectedDate.getDay().toString();
+    const schedule = openingHours[dayOfWeek];
 
-    if (schedule.closed) {
-      setError(`Siamo chiusi il ${schedule.day}. Ti aspettiamo negli altri giorni della settimana!`);
+    if (!schedule || schedule.closed) {
+      setError(`Siamo chiusi il ${schedule?.day || 'questo giorno'}. Ti aspettiamo negli altri giorni della settimana!`);
       setFormData(prev => ({ ...prev, time: '' }));
     } else {
       setError(null);
     }
-  };
+  }, [formData.date, openingHours]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,7 +75,7 @@ const ReservationForm: React.FC = () => {
     const formattedDate = formatDate(formData.date);
     const message = `Salve, vorrei prenotare un tavolo a nome *${formData.name}* per il giorno *${formattedDate}* alle ore *${formData.time}* per *${formData.guests}* persone.`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${RESTAURANT_INFO.whatsapp}?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/${info.whatsapp}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -96,62 +84,62 @@ const ReservationForm: React.FC = () => {
   };
 
   return (
-    <section id="reservation" className="py-24 bg-zinc-950 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-600/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-orange-600/5 blur-[100px] rounded-full pointer-events-none" />
+    <section id="reservation" className="py-32 bg-zinc-950 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-600/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-orange-600/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-zinc-900/40 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-zinc-800 shadow-2xl"
+          className="bg-zinc-900/30 backdrop-blur-2xl p-10 md:p-16 rounded-[3rem] border border-zinc-800 shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
         >
-          <div className="text-center mb-12">
-            <span className="text-orange-500 font-bold uppercase tracking-widest text-sm mb-2 block">Prenotazione Rapida</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-black mb-4">Prenota il <span className="text-orange-600">Tuo Tavolo</span></h2>
-            <p className="text-zinc-400">Seleziona data e ora tra le disponibilità effettive dell'Osteria.</p>
+          <div className="text-center mb-16">
+            <span className="text-orange-500 font-bold uppercase tracking-[0.5em] text-[10px] mb-4 block">Prenotazione Rapida</span>
+            <h2 className="text-5xl md:text-7xl font-serif font-black mb-6 uppercase tracking-tighter">Prenota il <br /><span className="text-orange-600">Tuo Tavolo</span></h2>
+            <p className="text-zinc-500 text-lg font-medium">Seleziona data e ora tra le disponibilità effettive dell'Osteria.</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="relative">
-              <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-2 block ml-1">Nome Completo</label>
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-3 block ml-2">Nome Completo</label>
               <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-orange-600/50" size={18} />
+                <User className="absolute left-6 top-1/2 -translate-y-1/2 text-orange-600" size={20} />
                 <input
                   required
                   type="text"
                   name="name"
-                  placeholder="Inserisci il tuo nome"
+                  placeholder="Il tuo nome"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-black/40 border border-zinc-800 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-orange-600 transition-all placeholder:text-zinc-700"
+                  className="w-full bg-black/60 border-2 border-zinc-800 rounded-2xl py-5 pl-16 pr-6 text-white focus:outline-none focus:border-orange-600 transition-all font-bold placeholder:text-zinc-700"
                 />
               </div>
             </div>
 
             <div className="relative">
-              <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-2 block ml-1">Numero di Persone</label>
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-3 block ml-2">Persone</label>
               <div className="relative">
-                <Users className="absolute left-4 top-1/2 -translate-y-1/2 text-orange-600/50" size={18} />
+                <Users className="absolute left-6 top-1/2 -translate-y-1/2 text-orange-600" size={20} />
                 <select
                   name="guests"
                   value={formData.guests}
                   onChange={handleChange}
-                  className="w-full bg-black/40 border border-zinc-800 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-orange-600 transition-all appearance-none cursor-pointer"
+                  className="w-full bg-black/60 border-2 border-zinc-800 rounded-2xl py-5 pl-16 pr-6 text-white focus:outline-none focus:border-orange-600 transition-all appearance-none cursor-pointer font-bold"
                 >
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
+                  {[1, 2, 3, 4, 5, 6].map(n => (
                     <option key={n} value={n} className="bg-zinc-900">{n} {n === 1 ? 'Persona' : 'Persone'}</option>
                   ))}
-                  <option value="10+" className="bg-zinc-900">Più di 10</option>
+                  <option value="10+" className="bg-zinc-900">Più di 6 (Contattaci)</option>
                 </select>
               </div>
             </div>
 
             <div className="relative">
-              <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-2 block ml-1">Data</label>
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-3 block ml-2">Data</label>
               <div className="relative">
-                <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-orange-600/50" size={18} />
+                <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-orange-600" size={20} />
                 <input
                   required
                   type="date"
@@ -159,22 +147,22 @@ const ReservationForm: React.FC = () => {
                   min={today}
                   value={formData.date}
                   onChange={handleChange}
-                  className={`w-full bg-black/40 border ${error ? 'border-red-500' : 'border-zinc-800'} rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-orange-600 transition-all [color-scheme:dark]`}
+                  className={`w-full bg-black/60 border-2 ${error ? 'border-red-500' : 'border-zinc-800'} rounded-2xl py-5 pl-16 pr-6 text-white focus:outline-none focus:border-orange-600 transition-all font-bold [color-scheme:dark]`}
                 />
               </div>
             </div>
 
             <div className="relative">
-              <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-2 block ml-1">Orario</label>
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-3 block ml-2">Orario</label>
               <div className="relative">
-                <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-orange-600/50" size={18} />
+                <Clock className="absolute left-6 top-1/2 -translate-y-1/2 text-orange-600" size={20} />
                 <select
                   required
                   name="time"
                   disabled={!!error || !formData.date}
                   value={formData.time}
                   onChange={handleChange}
-                  className={`w-full bg-black/40 border border-zinc-800 rounded-2xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-orange-600 transition-all appearance-none cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed`}
+                  className={`w-full bg-black/60 border-2 border-zinc-800 rounded-2xl py-5 pl-16 pr-6 text-white focus:outline-none focus:border-orange-600 transition-all appearance-none cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed font-bold`}
                 >
                   <option value="" className="bg-zinc-900">Seleziona orario</option>
                   {availableTimeSlots.map(slot => (
@@ -190,27 +178,27 @@ const ReservationForm: React.FC = () => {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="md:col-span-2 bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-xl flex items-center gap-3 text-sm"
+                  className="md:col-span-2 bg-red-500/10 border border-red-500/30 text-red-500 p-6 rounded-2xl flex items-center gap-4 text-sm font-bold"
                 >
-                  <AlertCircle size={18} />
+                  <AlertCircle size={24} />
                   <span>{error}</span>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            <div className="md:col-span-2 mt-4">
+            <div className="md:col-span-2 mt-6">
               <motion.button
                 whileHover={(!error && formData.time) ? { scale: 1.02 } : {}}
                 whileTap={(!error && formData.time) ? { scale: 0.98 } : {}}
                 type="submit"
                 disabled={!!error || !formData.time || !formData.name}
-                className={`w-full ${(error || !formData.time || !formData.name) ? 'bg-zinc-800 cursor-not-allowed text-zinc-500' : 'bg-orange-600 hover:bg-orange-700 text-white'} py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all shadow-xl shadow-orange-900/20`}
+                className={`w-full ${(error || !formData.time || !formData.name) ? 'bg-zinc-800 cursor-not-allowed text-zinc-600' : 'bg-orange-600 hover:bg-orange-700 text-white shadow-[0_20px_40px_rgba(234,88,12,0.3)]'} py-6 rounded-2xl font-black text-xl flex items-center justify-center gap-4 transition-all uppercase tracking-widest`}
               >
-                <MessageCircle size={22} />
-                {(error || !formData.date) ? 'DATA NON VALIDA' : !formData.time ? 'SCEGLI UN ORARIO' : 'INVIA PRENOTAZIONE SU WHATSAPP'}
+                <MessageCircle size={28} />
+                {(error || !formData.date) ? 'DATA NON VALIDA' : !formData.time ? 'SCEGLI UN ORARIO' : 'PRENOTA VIA WHATSAPP'}
               </motion.button>
-              <p className="text-center text-zinc-600 text-[10px] mt-4 uppercase tracking-tighter">
-                Il sistema mostra solo gli orari in cui la cucina è operativa.
+              <p className="text-center text-zinc-600 text-[10px] mt-6 uppercase tracking-[0.2em] font-bold">
+                Riceverai conferma immediata via chat dal nostro staff.
               </p>
             </div>
           </form>

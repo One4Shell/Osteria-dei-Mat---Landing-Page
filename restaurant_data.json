@@ -1,0 +1,116 @@
+
+{
+  "restaurantInfo": {
+    "name": "Osteria dei Mat",
+    "address": "Piazza del Popolo, 5, 18019 Vallecrosia Alta IM",
+    "phone": "+39 349 701 6395",
+    "whatsapp": "393497016395",
+    "rating": 4.8,
+    "reviewCount": 51,
+    "priceRange": "€20 - €30",
+    "cuisine": "Italiana, Barbecue, Pugliese",
+    "atmosphere": "Casual, Accogliente, Tranquillo"
+  },
+  "menuItems": [
+    {
+      "id": "1",
+      "name": "Tagliere iberico",
+      "description": "Selezione pregiata di salumi iberici serviti con accompagnamenti stagionali.",
+      "price": "€18.00",
+      "category": "Antipasti",
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800"
+    },
+    {
+      "id": "2",
+      "name": "Tagliere salumi e formaggi",
+      "description": "Assortimento di salumi locali e formaggi selezionati con composte.",
+      "price": "€16.00",
+      "category": "Antipasti",
+      "image": "https://images.unsplash.com/photo-1624462966581-bc6d768cbce5?q=80&w=800"
+    },
+    {
+      "id": "3",
+      "name": "Tonnato dei Mat",
+      "description": "Girello di vitello cotto a bassa temperatura con salsa tonnata fatta in casa.",
+      "price": "€14.00",
+      "category": "Antipasti",
+      "image": "https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?q=80&w=800"
+    },
+    {
+      "id": "4",
+      "name": "Carpaccio di Fassona",
+      "description": "Carne di fassona fresca servita con rucola selvatica e scaglie di parmigiano reggiano.",
+      "price": "€16.00",
+      "category": "Antipasti",
+      "image": "https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?q=80&w=800"
+    },
+    {
+      "id": "5",
+      "name": "Tagliolini al ragù",
+      "description": "Pasta fresca all'uovo con ragù di carne selezionata a cottura lenta.",
+      "price": "€13.00",
+      "category": "Primi",
+      "image": "https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?q=80&w=800"
+    },
+    {
+      "id": "6",
+      "name": "Carbonara Cacio e Pepe",
+      "description": "Unione creativa tra la cremosità della carbonara e il carattere del cacio e pepe.",
+      "price": "€14.00",
+      "category": "Primi",
+      "image": "https://images.unsplash.com/photo-1546549032-9571cd6b27df?q=80&w=800"
+    },
+    {
+      "id": "7",
+      "name": "Orecchiette Pugliesi",
+      "description": "Tradizione pugliese con cime di rapa, pinoli e uvetta.",
+      "price": "€12.00",
+      "category": "Primi",
+      "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=800"
+    },
+    {
+      "id": "8",
+      "name": "Black Angus Affumicato",
+      "description": "Taglio pregiato di Black Angus con marinatura alle erbe e affumicatura naturale.",
+      "price": "€22.00",
+      "category": "Secondi",
+      "image": "https://images.unsplash.com/photo-1546241072-48010ad28c2c?q=80&w=800"
+    },
+    {
+      "id": "9",
+      "name": "Bombette dei Mat",
+      "description": "Involtini di carne di maiale ripieni di formaggio, tipici della Valle d'Itria.",
+      "price": "€18.00",
+      "category": "Secondi",
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800"
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Marco R.",
+      "rating": 5,
+      "text": "La miglior carne della zona. Lo chef macellaio sa davvero il fatto suo. Atmosfera magica nel borgo di Vallecrosia.",
+      "date": "2 settimane fa"
+    },
+    {
+      "author": "Elena V.",
+      "rating": 5,
+      "text": "Le bombette pugliesi sono spettacolari. Servizio impeccabile e molto accogliente.",
+      "date": "1 mese fa"
+    },
+    {
+      "author": "Giuseppe L.",
+      "rating": 4,
+      "text": "Qualità del cibo eccelsa. Rapporto qualità-prezzo ottimo per la tipologia di carne offerta.",
+      "date": "3 mesi fa"
+    }
+  ],
+  "navLinks": [
+    { "label": "Home", "href": "#home" },
+    { "label": "Chi Siamo", "href": "#about" },
+    { "label": "Menu", "href": "#menu" },
+    { "label": "Prenota", "href": "#reservation" },
+    { "label": "Recensioni", "href": "#reviews" },
+    { "label": "Contatti", "href": "#contact" }
+  ]
+}

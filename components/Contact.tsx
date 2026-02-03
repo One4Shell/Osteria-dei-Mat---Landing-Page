@@ -1,79 +1,84 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Clock, Mail, Instagram, Facebook } from 'lucide-react';
-import { RESTAURANT_INFO } from '../constants';
+import { MapPin, Phone, Clock, Instagram, Facebook } from 'lucide-react';
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  info: any;
+}
+
+const Contact: React.FC<ContactProps> = ({ info }) => {
   return (
-    <section id="contact" className="py-24 bg-black relative">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+    <section id="contact" className="py-32 bg-black relative">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-24 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-serif font-black mb-8">Dove <span className="text-orange-600">Trovaci</span></h2>
-          <div className="space-y-8">
-            <div className="flex gap-6">
-              <div className="bg-zinc-900 p-4 rounded-xl text-orange-600 border border-zinc-800">
-                <MapPin size={24} />
+          <h2 className="text-6xl md:text-8xl font-serif font-black mb-16 uppercase tracking-tighter leading-none">Dove <br /><span className="text-orange-600">Trovarci</span></h2>
+          <div className="space-y-12">
+            <div className="flex gap-8 group">
+              <div className="bg-zinc-900 p-5 rounded-2xl text-orange-600 border border-zinc-800 group-hover:bg-orange-600 group-hover:text-white transition-all shadow-xl">
+                <MapPin size={28} />
               </div>
               <div>
-                <h4 className="font-bold text-xl mb-1 uppercase tracking-wider">Indirizzo</h4>
-                <p className="text-zinc-400">{RESTAURANT_INFO.address}</p>
+                <h4 className="font-black text-2xl mb-2 uppercase tracking-tight">Indirizzo</h4>
+                <p className="text-zinc-400 text-lg">{info.address}</p>
               </div>
             </div>
 
-            <div className="flex gap-6">
-              <div className="bg-zinc-900 p-4 rounded-xl text-orange-600 border border-zinc-800">
-                <Phone size={24} />
+            <div className="flex gap-8 group">
+              <div className="bg-zinc-900 p-5 rounded-2xl text-orange-600 border border-zinc-800 group-hover:bg-orange-600 group-hover:text-white transition-all shadow-xl">
+                <Phone size={28} />
               </div>
               <div>
-                <h4 className="font-bold text-xl mb-1 uppercase tracking-wider">Telefono</h4>
-                <p className="text-zinc-400">{RESTAURANT_INFO.phone}</p>
+                <h4 className="font-black text-2xl mb-2 uppercase tracking-tight">Telefono</h4>
+                <p className="text-zinc-400 text-lg">{info.phone}</p>
               </div>
             </div>
 
-            <div className="flex gap-6">
-              <div className="bg-zinc-900 p-4 rounded-xl text-orange-600 border border-zinc-800">
-                <Clock size={24} />
+            <div className="flex gap-8 group">
+              <div className="bg-zinc-900 p-5 rounded-2xl text-orange-600 border border-zinc-800 group-hover:bg-orange-600 group-hover:text-white transition-all shadow-xl">
+                <Clock size={28} />
               </div>
               <div>
-                <h4 className="font-bold text-xl mb-1 uppercase tracking-wider">Orari</h4>
-                <p className="text-zinc-400">Mar - Dom: 19:30 - 23:30</p>
-                <p className="text-zinc-500 text-sm">Chiuso il Lunedì</p>
+                <h4 className="font-black text-2xl mb-2 uppercase tracking-tight">Orari</h4>
+                <p className="text-zinc-400 text-lg font-medium">Mar - Dom: 19:30 - 23:30</p>
+                <p className="text-orange-600/70 text-sm font-bold uppercase tracking-widest mt-1">Chiuso il Lunedì</p>
               </div>
             </div>
           </div>
 
-          <div className="mt-12 flex gap-4">
-             <a href="#" className="p-4 bg-zinc-900 rounded-full text-zinc-400 hover:text-orange-500 border border-zinc-800 transition-all">
-                <Instagram size={24} />
-             </a>
-             <a href="#" className="p-4 bg-zinc-900 rounded-full text-zinc-400 hover:text-orange-500 border border-zinc-800 transition-all">
-                <Facebook size={24} />
-             </a>
+          <div className="mt-16 flex gap-6">
+             <motion.a whileHover={{ y: -5 }} href="#" className="p-5 bg-zinc-900 rounded-full text-zinc-400 hover:text-orange-500 border border-zinc-800 hover:border-orange-600 transition-all shadow-lg">
+                <Instagram size={28} />
+             </motion.a>
+             <motion.a whileHover={{ y: -5 }} href="#" className="p-5 bg-zinc-900 rounded-full text-zinc-400 hover:text-orange-500 border border-zinc-800 hover:border-orange-600 transition-all shadow-lg">
+                <Facebook size={28} />
+             </motion.a>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 h-[400px] md:h-full shadow-2xl border border-zinc-800"
+          className="rounded-[3rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 h-[500px] md:h-[650px] shadow-[0_50px_100px_rgba(0,0,0,0.6)] border border-zinc-800 relative group"
         >
-           {/* Placeholder for Google Map - real iframe would go here */}
-           <div className="w-full h-full bg-zinc-900 relative flex items-center justify-center p-10 text-center">
-              <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000')] bg-cover grayscale" />
-              <div className="relative z-10">
-                <MapPin size={64} className="mx-auto text-orange-600 mb-6" />
-                <h3 className="text-2xl font-serif font-bold mb-4">Ci trovi a Vallecrosia Alta</h3>
-                <p className="text-zinc-500 mb-6">Piazza del Popolo, 5</p>
+           <div className="w-full h-full bg-zinc-900 relative flex items-center justify-center p-12 text-center">
+              <div className="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000')] bg-cover grayscale" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+              <div className="relative z-10 group-hover:scale-110 transition-transform duration-700">
+                <div className="bg-orange-600 p-8 rounded-full inline-block mb-10 shadow-[0_0_60px_rgba(234,88,12,0.6)]">
+                  <MapPin size={48} className="text-white" />
+                </div>
+                <h3 className="text-4xl font-serif font-black mb-6 uppercase tracking-tighter">Ci trovi a Vallecrosia Alta</h3>
+                <p className="text-zinc-400 text-xl mb-12 font-medium">Piazza del Popolo, 5</p>
                 <a 
                   href="https://maps.app.goo.gl/RKaAt6WC6B7e233v5"
                   target="_blank"
-                  className="bg-zinc-800 hover:bg-orange-600 text-white px-6 py-3 rounded-full text-sm font-bold transition-all"
+                  className="bg-white text-black hover:bg-orange-600 hover:text-white px-10 py-5 rounded-full text-sm font-black tracking-widest transition-all shadow-2xl uppercase"
                 >
                   APRI IN GOOGLE MAPS
                 </a>
