@@ -168,13 +168,6 @@ const App: React.FC = () => {
           </div>
           
           <div className="flex flex-col items-center gap-10">
-             <h4 className="text-orange-500 font-black uppercase tracking-[0.4em] text-xs">Navigazione</h4>
-             <div className="flex flex-wrap justify-center gap-x-12 gap-y-6">
-                <a href="#home" className="text-zinc-500 hover:text-white transition-colors text-xs font-black uppercase tracking-[0.2em]">Home</a>
-                <a href="#about" className="text-zinc-500 hover:text-white transition-colors text-xs font-black uppercase tracking-[0.2em]">Bottega</a>
-                <a href="#menu" className="text-zinc-500 hover:text-white transition-colors text-xs font-black uppercase tracking-[0.2em]">Selezione</a>
-                <a href="#reservation" className="text-zinc-500 hover:text-white transition-colors text-xs font-black uppercase tracking-[0.2em]">Tavolo</a>
-             </div>
           </div>
 
           <div className="flex flex-col items-center md:items-end gap-12">

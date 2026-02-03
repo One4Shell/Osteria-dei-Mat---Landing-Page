@@ -58,9 +58,6 @@ const MenuCard = ({ item }: { item: any }) => {
             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
-          <div className="absolute bottom-6 right-6 bg-orange-600 px-6 py-2 rounded-full shadow-2xl">
-            <span className="text-white font-black text-xl tracking-tighter">{item.price}</span>
-          </div>
         </div>
 
         <div style={{ transform: "translateZ(40px)" }} className="p-10">
