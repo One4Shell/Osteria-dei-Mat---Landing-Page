@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Clock, Instagram, Facebook } from 'lucide-react';
+import { MapPin, Phone, Clock, Infinity, Facebook } from 'lucide-react';
 
 interface ContactProps {
   info: any;
@@ -51,10 +51,10 @@ const Contact: React.FC<ContactProps> = ({ info }) => {
           </div>
 
           <div className="mt-16 flex gap-6">
-            <motion.a whileHover={{ y: -5 }} href="#" className="p-5 bg-zinc-900 rounded-full text-zinc-400 hover:text-orange-500 border border-zinc-800 hover:border-orange-600 transition-all shadow-lg">
-              <Instagram size={28} />
+            <motion.a whileHover={{ y: -5 }} href="https://www.tripadvisor.com/Restaurant_Review-g26867601-d28123744-Reviews-Osteria_Dei_Mat-Vallecrosia_Alta_Province_of_Imperia_Liguria.html" className="p-5 bg-zinc-900 rounded-full text-zinc-400 hover:text-orange-500 border border-zinc-800 hover:border-orange-600 transition-all shadow-lg">
+              <Infinity size={28} />
             </motion.a>
-            <motion.a whileHover={{ y: -5 }} href="#" className="p-5 bg-zinc-900 rounded-full text-zinc-400 hover:text-orange-500 border border-zinc-800 hover:border-orange-600 transition-all shadow-lg">
+            <motion.a whileHover={{ y: -5 }} href="https://www.facebook.com/people/Osteria-dei-Mat/61561326031174/" className="p-5 bg-zinc-900 rounded-full text-zinc-400 hover:text-orange-500 border border-zinc-800 hover:border-orange-600 transition-all shadow-lg">
               <Facebook size={28} />
             </motion.a>
           </div>
