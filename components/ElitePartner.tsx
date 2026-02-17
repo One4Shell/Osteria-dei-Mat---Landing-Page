@@ -31,6 +31,10 @@ const ElitePartner: React.FC = () => {
                             Partner <span className="text-orange-600">Elitaria</span>
                         </h2>
 
+                        <div className="flex items-center justify-center py-6">
+                            <img src="./images/elitaria.svg" height={130} width={130} alt="Elitaria logo" />
+                        </div>
+
                         <div className="inline-block px-4 py-1.5 border border-orange-600/30 rounded-full bg-orange-600/5 backdrop-blur-sm">
                             <span className="text-orange-500 text-xs font-black uppercase tracking-[0.3em]">
                                 Dal 2022
