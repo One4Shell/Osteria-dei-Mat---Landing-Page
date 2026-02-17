@@ -14,7 +14,7 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
     target: containerRef,
     offset: ["start start", "end start"]
   });
-  
+
   // Smooth springs for high-end feel
   const smoothY = useSpring(scrollYProgress, { stiffness: 50, damping: 20 });
 
@@ -29,17 +29,17 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
   return (
     <section ref={containerRef} id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-black perspective-container">
       {/* Background Layer with Zoom-Scroll */}
-      <motion.div 
+      <motion.div
         style={{ scale: scaleBg, y: yBg }}
         className="absolute inset-0 z-0"
       >
-        <motion.div 
+        <motion.div
           style={{ opacity: opacityOverlay }}
-          className="absolute inset-0 bg-black z-10" 
+          className="absolute inset-0 bg-black z-10"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black z-[11]" />
-        <img 
-          src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2400"
+        <img
+          src="./public/images/hero.jpg"
           alt="Premium BBQ Steak"
           className="w-full h-full object-cover grayscale-[30%] contrast-[1.1] brightness-[0.6]"
         />
@@ -50,20 +50,20 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
         {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
-            initial={{ 
-              y: "110vh", 
-              x: Math.random() * 100 + "vw", 
+            initial={{
+              y: "110vh",
+              x: Math.random() * 100 + "vw",
               opacity: 0,
               scale: Math.random() * 0.4 + 0.2
             }}
-            animate={{ 
-              y: "-10vh", 
+            animate={{
+              y: "-10vh",
               opacity: [0, 1, 0],
               x: (Math.random() * 100) + (Math.random() * 30 - 15) + "vw"
             }}
-            transition={{ 
-              duration: 5 + Math.random() * 10, 
-              repeat: Infinity, 
+            transition={{
+              duration: 5 + Math.random() * 10,
+              repeat: Infinity,
               delay: Math.random() * 10,
               ease: "linear"
             }}
@@ -73,7 +73,7 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
       </div>
 
       {/* Floating 3D Content Wrapper */}
-      <motion.div 
+      <motion.div
         style={{ y: textY }}
         className="relative z-30 text-center px-6"
       >
@@ -86,15 +86,15 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
           className="relative mb-0 flex justify-center"
         >
           <div className="relative group">
-             <div className="absolute inset-0 bg-orange-600/30 blur-[100px] rounded-full scale-100 group-hover:bg-orange-600/50 transition-colors" />
-             <img 
-               src={LOGO_URL} 
-               alt="Osteria dei Mat Top Hat" 
-               className="w-48 md:w-80 h-auto relative z-10 drop-shadow-[0_50px_100px_rgba(0,0,0,0.8)]"
-               style={{ 
-                 filter: 'invert(50%) sepia(85%) saturate(2500%) hue-rotate(345deg) brightness(110%) contrast(110%)'
-               }}
-             />
+            <div className="absolute inset-0 bg-orange-600/30 blur-[100px] rounded-full scale-100 group-hover:bg-orange-600/50 transition-colors" />
+            <img
+              src={LOGO_URL}
+              alt="Osteria dei Mat Top Hat"
+              className="w-48 md:w-80 h-auto relative z-10 drop-shadow-[0_50px_100px_rgba(0,0,0,0.8)]"
+              style={{
+                filter: 'invert(50%) sepia(85%) saturate(2500%) hue-rotate(345deg) brightness(110%) contrast(110%)'
+              }}
+            />
           </div>
         </motion.div>
 
@@ -115,8 +115,8 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
             <span className="block text-white opacity-90">Osteria</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-b from-orange-400 via-orange-600 to-orange-900 filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]">Dei Mat</span>
           </h1>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
@@ -128,7 +128,7 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
       </motion.div>
 
       {/* Decorative Parallax Accents */}
-      <motion.div 
+      <motion.div
         style={{ y: useTransform(smoothY, [0, 1], [0, -100]) }}
         className="absolute left-16 bottom-24 hidden lg:flex flex-col gap-8 items-center z-30"
       >
@@ -137,7 +137,7 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
       </motion.div>
 
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         animate={{ y: [0, 15, 0], opacity: [0.3, 0.7, 0.3] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/40 z-30 cursor-pointer flex flex-col items-center gap-2"

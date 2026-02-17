@@ -1,4 +1,3 @@
-
 {
   "restaurantInfo": {
     "name": "Osteria dei Mat",
@@ -87,30 +86,48 @@
   ],
   "reviews": [
     {
-      "author": "Marco R.",
+      "author": "Madalina G.",
       "rating": 5,
-      "text": "La miglior carne della zona. Lo chef macellaio sa davvero il fatto suo. Atmosfera magica nel borgo di Vallecrosia.",
+      "text": "Abbiamo mangiato la sera, locale piccolino ma molto carino e accogliente. Cibo buonissimo e di qualità con proprietari molto gentili e disponibili, un ambiente che ti fa sentire a casa. ",
       "date": "2 settimane fa"
     },
     {
-      "author": "Elena V.",
+      "author": "Erika B.",
       "rating": 5,
-      "text": "Le bombette pugliesi sono spettacolari. Servizio impeccabile e molto accogliente.",
+      "text": "Piatti tipici della tradizione, ormai difficili da trovare in un comune ristorante, ma da Alfredo non si sbaglia! Tutto cucinato con amore. Locale piccolino molto accogliente, nel centro storico di Vallecrosia, personale molto gentile",
       "date": "1 mese fa"
     },
     {
-      "author": "Giuseppe L.",
-      "rating": 4,
-      "text": "Qualità del cibo eccelsa. Rapporto qualità-prezzo ottimo per la tipologia di carne offerta.",
+      "author": "Giampiero R.",
+      "rating": 5,
+      "text": "Ottimo ristorante nel centro storico di Vallecrosia Alta, lo chef ci ha consigliato la tagliata reggiana molto morbida e gustosa e un tagliere di salumi e formaggi.",
       "date": "3 mesi fa"
     }
   ],
   "navLinks": [
-    { "label": "Home", "href": "#home" },
-    { "label": "Chi Siamo", "href": "#about" },
-    { "label": "Menu", "href": "#menu" },
-    { "label": "Prenota", "href": "#reservation" },
-    { "label": "Recensioni", "href": "#reviews" },
-    { "label": "Contatti", "href": "#contact" }
+    {
+      "label": "Home",
+      "href": "#home"
+    },
+    {
+      "label": "Chi Siamo",
+      "href": "#about"
+    },
+    {
+      "label": "Menu",
+      "href": "#menu"
+    },
+    {
+      "label": "Prenota",
+      "href": "#reservation"
+    },
+    {
+      "label": "Recensioni",
+      "href": "#reviews"
+    },
+    {
+      "label": "Contatti",
+      "href": "#contact"
+    }
   ]
 }
