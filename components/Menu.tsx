@@ -2,7 +2,15 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
-const MenuCard = ({ item }: { item: any }) => {
+interface MenuItem {
+  id: string | number;
+  name: string;
+  description: string;
+  image: string;
+  category: string;
+}
+
+const MenuCard: React.FC<{ item: MenuItem }> = ({ item }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -11,7 +19,7 @@ const MenuCard = ({ item }: { item: any }) => {
 
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
-  
+
   // Dynamic Reflection
   const lightX = useTransform(mouseXSpring, [-0.5, 0.5], ["-20%", "120%"]);
   const lightY = useTransform(mouseYSpring, [-0.5, 0.5], ["-20%", "120%"]);
@@ -52,9 +60,9 @@ const MenuCard = ({ item }: { item: any }) => {
       {/* 3D Content Container */}
       <div style={{ transform: "translateZ(60px)" }} className="relative">
         <div className="h-72 overflow-hidden relative">
-          <motion.img 
-            src={item.image} 
-            alt={item.name} 
+          <motion.img
+            src={item.image}
+            alt={item.name}
             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
@@ -72,20 +80,20 @@ const MenuCard = ({ item }: { item: any }) => {
       </div>
 
       {/* Dynamic Lighting Overlay */}
-      <motion.div 
+      <motion.div
         style={{
           background: `radial-gradient(circle at ${lightX} ${lightY}, rgba(255,255,255,0.08) 0%, transparent 70%)`,
         }}
         className="absolute inset-0 pointer-events-none z-20"
       />
-      
+
       {/* Glossy Border Mask */}
       <div className="absolute inset-0 border border-white/10 rounded-[3rem] pointer-events-none z-30" />
     </motion.div>
   );
 };
 
-const Menu: React.FC<{ items: any[] }> = ({ items }) => {
+const Menu: React.FC<{ items: MenuItem[] }> = ({ items }) => {
   const [activeCategory, setActiveCategory] = useState<string>('Tutti');
 
   const categories = useMemo(() => {
@@ -94,8 +102,8 @@ const Menu: React.FC<{ items: any[] }> = ({ items }) => {
   }, [items]);
 
   const filteredItems = useMemo(() => {
-    return activeCategory === 'Tutti' 
-      ? items 
+    return activeCategory === 'Tutti'
+      ? items
       : items.filter(item => item.category === activeCategory);
   }, [activeCategory, items]);
 
@@ -109,7 +117,7 @@ const Menu: React.FC<{ items: any[] }> = ({ items }) => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-32">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-orange-500 font-black uppercase tracking-[0.8em] text-[10px] mb-8 block"
@@ -120,17 +128,16 @@ const Menu: React.FC<{ items: any[] }> = ({ items }) => {
             <span className="text-white opacity-20">Selezione</span><br />
             <span className="text-orange-600 italic">Chef</span>
           </h2>
-          
+
           <div className="flex flex-wrap justify-center gap-6 mb-20">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-12 py-5 rounded-full border-2 transition-all duration-700 uppercase text-[10px] font-black tracking-[0.4em] ${
-                  activeCategory === cat 
-                    ? 'bg-orange-600 border-orange-600 text-white shadow-[0_20px_50px_rgba(234,88,12,0.4)] scale-110' 
+                className={`px-12 py-5 rounded-full border-2 transition-all duration-700 uppercase text-[10px] font-black tracking-[0.4em] ${activeCategory === cat
+                    ? 'bg-orange-600 border-orange-600 text-white shadow-[0_20px_50px_rgba(234,88,12,0.4)] scale-110'
                     : 'border-zinc-800 text-zinc-500 hover:border-zinc-500 hover:text-white backdrop-blur-md'
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -138,7 +145,7 @@ const Menu: React.FC<{ items: any[] }> = ({ items }) => {
           </div>
         </div>
 
-        <motion.div 
+        <motion.div
           layout
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-12"
         >
