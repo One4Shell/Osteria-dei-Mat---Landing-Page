@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import ReservationForm from './components/ReservationForm';
 import ProductSection from './components/ProductSection';
 import ElitePartner from './components/ElitePartner';
+import CustomCursor from './components/CustomCursor';
 import { MessageCircle, ArrowUp } from 'lucide-react';
 import { LOGO_URL } from './constants';
 
@@ -44,6 +45,7 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-black min-h-screen text-white selection:bg-orange-600 selection:text-white overflow-x-hidden font-sans">
+      <CustomCursor />
       <AnimatePresence>
         {loading && (
           <motion.div
