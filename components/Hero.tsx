@@ -39,7 +39,7 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black z-[11]" />
         <img
-          src="./public/images/hero.jpg"
+          src="./public/images/hero.webp"
           alt="Premium BBQ Steak"
           className="w-full h-full object-cover grayscale-[30%] contrast-[1.1] brightness-[0.6]"
         />
