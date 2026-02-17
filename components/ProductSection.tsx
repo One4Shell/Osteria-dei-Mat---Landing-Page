@@ -12,7 +12,7 @@ const ProductSection: React.FC = () => {
   return (
     <section className="py-40 bg-black relative overflow-hidden">
       {/* Decorative Parallax Background Element */}
-      <motion.div 
+      <motion.div
         style={{ scale, opacity }}
         className="absolute inset-0 z-0 pointer-events-none"
       >
@@ -22,10 +22,10 @@ const ProductSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
-          
+
           {/* Left Column: Visual & 3D Cards */}
           <div className="lg:col-span-5 space-y-8">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               className="bg-zinc-900/40 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/5 shadow-2xl relative"
@@ -39,7 +39,7 @@ const ProductSection: React.FC = () => {
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
@@ -57,7 +57,7 @@ const ProductSection: React.FC = () => {
 
           {/* Right Column: Narrative Content */}
           <div className="lg:col-span-7">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               className="text-orange-600 font-black uppercase tracking-[0.5em] text-[10px]"
@@ -68,7 +68,7 @@ const ProductSection: React.FC = () => {
               L'Alchimia <br />
               <span className="text-orange-500">del Fuoco</span>
             </h2>
-            
+
             <div className="h-1 w-32 bg-orange-600 mb-12" />
 
             <p className="text-zinc-300 text-xl leading-relaxed mb-10 font-light italic">
@@ -89,7 +89,7 @@ const ProductSection: React.FC = () => {
                   <Award size={24} />
                   <span className="font-black uppercase tracking-widest text-xs">Origine Protetta</span>
                 </div>
-                <p className="text-zinc-500 text-sm">Dal cuore della Puglia arrivano i segreti della lavorazione, fusi con l'innovazione dei tagli internazionali.</p>
+                <p className="text-zinc-500 text-sm">Dal cuore e della passione arrivano i segreti della lavorazione, fusi con l'innovazione dei tagli internazionali.</p>
               </div>
             </div>
           </div>
@@ -101,7 +101,7 @@ const ProductSection: React.FC = () => {
         style={{ y: useTransform(scrollYProgress, [0.4, 0.7], [100, -100]) }}
         className="absolute top-1/4 right-0 w-64 h-64 opacity-20 pointer-events-none hidden xl:block"
       >
-        <img src={ LOGO_URL } className="w-full h-full object-contain rotate-45" alt="Meat slice" />
+        <img src={LOGO_URL} className="w-full h-full object-contain rotate-45" alt="Meat slice" />
       </motion.div>
     </section>
   );

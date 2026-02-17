@@ -122,7 +122,7 @@ const Hero: React.FC<HeroProps> = ({ info }) => {
             transition={{ delay: 1, duration: 1 }}
             className="text-lg md:text-3xl text-zinc-400 max-w-4xl mx-auto mb-16 font-serif italic tracking-tight"
           >
-            "Dove la carne incontra il fuoco e la tradizione pugliese si fa arte."
+            "Solo tagli pregiati, selezionati con cura e frollati a regola d'arte."
           </motion.p>
         </motion.div>
       </motion.div>
